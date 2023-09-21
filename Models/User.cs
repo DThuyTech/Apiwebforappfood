@@ -1,32 +1,38 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
 
 namespace apiforapp.Models
 {
     public class User
     {
         [Key]
-        public int IdUser { get; set; }
+        public int idUser { get; set; }
         [EmailAddress]
-        public string EmailAddress { get; set; }
-        public string Passsword { get; set; }
+        public string emailAddress { get; set; }
+        public string password { get; set; }
         [AllowNull]
-        public int weight { get; set; }
+        public double weigh { get; set; }
         [AllowNull]
-        public int heigh { get; set; }
+        public double heigh { get; set; }
         [AllowNull]
-        public int gender { get; set; }
+        public bool gender { get; set; }
         [AllowNull]
         public int age { get; set; }
         [AllowNull]
         public string avatar { get; set; }
 
-        [ForeignKey ("Statebody")]
-        public int idStatebody { get; set; }
-        public Statebody Statebody { get; set; }
-        [ForeignKey ("Role")]
-        public int idRole { get; set; }
-        public Role role { get; set; }
+        //[ForeignKey ("statebody")]
+        //public int idStatebody { get; set; }
+        //[JsonIgnore]
+        //public Statebody statebody { get; set; }
+
+        //[ForeignKey ("role")]
+        //public int idRole { get; set; }
+        //[JsonIgnore]
+        //public Role role { get; set; }
+        
+        public string name { get; set; }
     }
 }
