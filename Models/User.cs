@@ -22,11 +22,6 @@ namespace apiforapp.Models
         [AllowNull]
         public string avatar { get; set; }
 
-        [ForeignKey ("Statebody")]
-        public int idStatebody { get; set; }
-        public Statebody Statebody { get; set; }
-        [ForeignKey ("Role")]
-        public int idRole { get; set; }
-        public Role role { get; set; }
+      
     }
 }
