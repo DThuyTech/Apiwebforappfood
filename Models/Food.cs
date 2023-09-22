@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace apiforapp.Models
 {
@@ -12,8 +13,9 @@ namespace apiforapp.Models
         public float calories { get; set; }
         public float cacbonhydrat { get; set; }
         public float protein { get; set; }
-        public string Desciption { get; set; }
+        public string imagePath { get; set; }
         public string RecipePath { get; set; }
+        [AllowNull]
         public int Ratecount { get; set; }
 
         [ForeignKey("FoodType")]
