@@ -2,6 +2,7 @@
 
 namespace apiforapp.Models
 {
+   
     public class Food
     {
         [Key]
@@ -12,5 +13,9 @@ namespace apiforapp.Models
         public double Carbohydrates { get; set; }
         public double Fat { get; set; }
         public string ImageUrl { get; set; }
+        public string RecipeInstructions { get; set; }
+        public string RecipeIngredientParts { get; set; }
+
+
     }
 }

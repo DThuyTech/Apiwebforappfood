@@ -152,12 +152,17 @@ namespace apiforapp.Api
 
 
             List<Food> foodItems = _db.Foods.ToList();
-
+            int numberOfMealsPerDay = 3;
+            double acceptableError = 1.5;
+            Logic logic = new Logic();
             for (int i = 0; i < 7; i++)
             {
-                List<Food> breakfastFoods = Logic.SelectFoods(foodItems, breakfastCalories, breakfastProtein, breakfastFat, breakfastCarbs, 3);
-                List<Food> lunchFoods = Logic.SelectFoods(foodItems, lunchCalories, lunchProtein, lunchFat, lunchCarbs, 3);
-                List<Food> dinnerFoods = Logic.SelectFoods(foodItems, dinnerCalories, dinnerProtein, dinnerFat, dinnerCarbs, 3);
+                List<Food> breakfastFoods = Logic.SelectFoods(foodItems, breakfastCalories, breakfastProtein, breakfastFat, breakfastCarbs, numberOfMealsPerDay, acceptableError);
+                Console.WriteLine("Ngày " + i + " sang:  " +"\tCalo = " + logic.calCalo(breakfastFoods) + "\tProtein = "+logic.calProtein(breakfastFoods)+"\tCarbs = "+logic.calCarbs(breakfastFoods)+"\tFat = " +logic.calFat(breakfastFoods));
+                List<Food> lunchFoods = Logic.SelectFoods(foodItems, lunchCalories, lunchProtein, lunchFat, lunchCarbs, numberOfMealsPerDay, acceptableError);
+                Console.WriteLine("Ngày " + i + " trua:  " + "\tCalo = " + logic.calCalo(lunchFoods) + "\tProtein = " + logic.calProtein(lunchFoods) + "\tCarbs = " + logic.calCarbs(lunchFoods) + "\tFat = " + logic.calFat(lunchFoods));
+                List<Food> dinnerFoods = Logic.SelectFoods(foodItems, dinnerCalories, dinnerProtein, dinnerFat, dinnerCarbs, numberOfMealsPerDay, acceptableError);
+                Console.WriteLine("Ngày " + i + " toi:  " + "\tCalo = " + logic.calCalo(dinnerFoods) + "\tProtein = " + logic.calProtein(dinnerFoods) + "\tCarbs = " + logic.calCarbs(dinnerFoods) + "\tFat = " + logic.calFat(dinnerFoods));
 
                 if (foodItems.Count <= 3)
                 {
@@ -257,5 +262,6 @@ namespace apiforapp.Api
             return Ok(data);
 
         }
+        
     }
 }

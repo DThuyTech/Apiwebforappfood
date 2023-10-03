@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
@@ -9,6 +10,7 @@ namespace apiforapp.Models
     {
         [Key]
         public int idUser { get; set; }
+        public string name { get; set; }
         [EmailAddress]
         public string emailAddress { get; set; }
         public string password { get; set; }
@@ -22,17 +24,10 @@ namespace apiforapp.Models
         public int age { get; set; }
         [AllowNull]
         public string avatar { get; set; }
-
-        //[ForeignKey ("statebody")]
-        //public int idStatebody { get; set; }
-        //[JsonIgnore]
-        //public Statebody statebody { get; set; }
-
-        //[ForeignKey ("role")]
-        //public int idRole { get; set; }
-        //[JsonIgnore]
-        //public Role role { get; set; }
-        
-        public string name { get; set; }
+        //public int isActive { get; set; }
+        [ForeignKey("Role")]
+        public int idRole { get; set; }
+        [JsonIgnore]
+        public virtual Role? Role { get; set; }
     }
 }

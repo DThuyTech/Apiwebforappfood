@@ -49,9 +49,38 @@ namespace apiforapp.Migrations
                     b.Property<double>("Protein")
                         .HasColumnType("float");
 
+                    b.Property<string>("RecipeIngredientParts")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RecipeInstructions")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Foods");
+                });
+
+            modelBuilder.Entity("apiforapp.Models.Role", b =>
+                {
+                    b.Property<int>("idRole")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idRole"), 1L, 1);
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("idRole");
+
+                    b.ToTable("Roles");
                 });
 
             modelBuilder.Entity("apiforapp.Models.User", b =>
@@ -79,6 +108,9 @@ namespace apiforapp.Migrations
                     b.Property<double>("heigh")
                         .HasColumnType("float");
 
+                    b.Property<int>("idRole")
+                        .HasColumnType("int");
+
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -92,7 +124,25 @@ namespace apiforapp.Migrations
 
                     b.HasKey("idUser");
 
+                    b.HasIndex("idRole");
+
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("apiforapp.Models.User", b =>
+                {
+                    b.HasOne("apiforapp.Models.Role", "Role")
+                        .WithMany("User")
+                        .HasForeignKey("idRole")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("apiforapp.Models.Role", b =>
+                {
+                    b.Navigation("User");
                 });
 #pragma warning restore 612, 618
         }
