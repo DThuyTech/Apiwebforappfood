@@ -24,7 +24,11 @@ namespace apiforapp.Controllers
 
         public IActionResult Index()
         {
-
+                
+            return View();
+        }
+         public IActionResult Admin()
+        {
             return View();
         }
     }
