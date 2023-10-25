@@ -149,12 +149,14 @@
     border-radius: 50%;
     margin-left:1rem;
 }
-
-.user-wrapper small{
-    display: inline-block;
-    color: var(--text-grey);
-  
+.user-wrapper h4{
+    margin-left: 1rem;
 }
+    .user-wrapper small {
+        display: inline-block;
+        color: var(--text-grey);
+        margin-left: 1rem;
+    }
 
 main{
     margin-top: 40px;
@@ -195,14 +197,11 @@ main{
 }
 
 .card-single:last-child{
-    background: var(--main-color);
+    color: var(--main-color);
+
 }
 
-.card-single:last-child h1,
-.card-single:last-child div:first-child span,
-.card-single:last-child div:last-child span{
-    color: #fff;
-}
+
 
 .recent-grid{
     margin-top: 3rem;
@@ -392,7 +391,7 @@ tr td:last-child{
         align-items:center;
         justify-content: center !important;
     }
-
+    
     header h2 span{
         text-align:center;
         padding-right: 0rem;
