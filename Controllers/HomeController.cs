@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Diagnostics;
+using System.Net.Http;
+using System.Text.Json;
 
 namespace apiforapp.Controllers
 {
@@ -20,6 +22,26 @@ namespace apiforapp.Controllers
         {
             _logger = logger;
             _db = db;
+        }
+
+        async public Task<IActionResult> FoodController() 
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("http://foodtureapi.somee.com/api/Food/GetFoodsToPage?page=1");
+            string content = await response.Content.ReadAsStringAsync();
+            List<Food> foods =  System.Text.Json.JsonSerializer.Deserialize<List<Food>>(content);
+            FoodViewModel foodViewModel = new FoodViewModel(foods);
+            return View(foodViewModel);
+        }
+
+        async public Task<IActionResult> FoodEdit(int id)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = await client.GetAsync("http://foodtureapi.somee.com/api/Food/GetFoodsToPage?page=1");
+            string content = await response.Content.ReadAsStringAsync();
+            List<Food> foods = System.Text.Json.JsonSerializer.Deserialize<List<Food>>(content);
+            Food foodEdit = foods.FirstOrDefault(p => p.Id == id);            
+            return View(foodEdit);
         }
 
         public IActionResult Index()

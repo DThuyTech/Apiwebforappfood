@@ -1,0 +1,204 @@
+﻿@model apiforapp.ViewModels.FoodViewModel
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <title> Admin Page</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel=" stylesheet" href="~/css/style.css" />
+</head>
+
+
+<body>
+
+    <input type="checkbox" id="nav-toggle" />
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span class="lar la-address-book"></span> <span>Admin Page</span></h2>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="" >
+                        <span class="las la-igloo"> </span>
+                        <span> Dashboard </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="las la-users"> </span>
+                        <span> Customers </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/Home/FoodController" class="active">
+                        <span class="las la-clipboard-list"> </span>
+                        <span> Foods </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="las la-shopping-bag"> </span>
+                        <span> Category </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="las la-receipt"> </span>
+                        <span> Inventory </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="las la-user-circle"> </span>
+                        <span> Accounts </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="las la-clipboard-list"> </span>
+                        <span> Tasks </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <div class="header-title">
+                <h2>
+                    <label for="nav-toggle">
+                        <span class="las la-bars">
+                            Dasboard
+                        </span>
+                    </label>
+                </h2>
+            </div>
+
+            <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search here...." />
+
+            </div>
+
+            <div class="user-wrapper">
+                <img src="~/Content/images/Admin.jpg" width="40px" height="40px" alt="" />
+                <div>
+                    <h4>Maneger</h4>
+                    <small>This is Boss in company</small>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="cards">
+                <div class="card-single">
+                    <div>
+                        <h1>50</h1>
+                        <span>Customers</span>
+                    </div>
+                    <div>
+                        <span class="las la-users"></span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h1>20</h1>
+                        <span>Projects</span>
+                    </div>
+                    <div>
+                        <span class="las la-clipboard"></span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h1>130</h1>
+                        <span>Orders</span>
+                    </div>
+                    <div>
+                        <span class="las la-shopping-bag"></span>
+                    </div>
+                </div>
+
+                <div class="card-single">
+                    <div>
+                        <h1>$6k</h1>
+                        <span>Income</span>
+                    </div>
+                    <div>
+                        <span class="lab la-google-wallet"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="projects">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>List foods</h2>
+                            <button>See all<span class="las la-arrow-right"></span></button>
+                        </div>
+                        <div class="card-body">
+                            <table width="100%">
+                                <thead>
+                                    <tr>
+                                        <td> Food name </td>
+                                        <td> Calories </td>
+                                        <td> Cacbonhydrat </td>
+                                        <td> Fat </td>
+                                        <td> Protein </td>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        String nameFood, caloriesFood, proteinFood, cacbonhydratFood, fatFood;
+                                    }
+                                    @for(int i = 0 ;i< Model.listFood.Count; i++)
+                                    {
+                                        nameFood = Model.listFood[i].Name;
+                                        caloriesFood = Model.listFood[i].Calories.ToString();
+                                        proteinFood = Model.listFood[i].Protein.ToString();
+                                        cacbonhydratFood = Model.listFood[i].Carbohydrates.ToString();
+                                        fatFood = Model.listFood[i].Fat.ToString();
+                                        <tr>
+                                            <td>@nameFood</td>
+                                            <td>@caloriesFood</td>
+                                            <td>@cacbonhydratFood</td>
+                                            <td>@fatFood</td>
+                                            <td>@proteinFood</td>
+                                            <td>
+                                                <ul>
+                                                    <a asp-action="Editloaimon" asp-route-id="@Model.listFood[i].Id">Edit</a> |
+                                                    <a asp-action="DeleteLM" asp-route-id="@Model.listFood[i].Id">Delete</a> |
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                    }
+                                 
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-reponsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+            </div>
+
+        </main>
+    </div>
+
+
+
+</body>
+
+</html>
