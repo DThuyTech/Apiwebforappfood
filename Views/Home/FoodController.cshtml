@@ -20,7 +20,7 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="" >
+                    <a href="/Home/Admin">
                         <span class="las la-igloo"> </span>
                         <span> Dashboard </span>
                     </a>
@@ -38,9 +38,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="/Home/DetailFood">
                         <span class="las la-shopping-bag"> </span>
-                        <span> Category </span>
+                        <span> DetailFood </span>
                     </a>
                 </li>
                 <li>
@@ -92,54 +92,15 @@
             </div>
         </header>
         <main>
-            <div class="cards">
-                <div class="card-single">
-                    <div>
-                        <h1>50</h1>
-                        <span>Customers</span>
-                    </div>
-                    <div>
-                        <span class="las la-users"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>20</h1>
-                        <span>Projects</span>
-                    </div>
-                    <div>
-                        <span class="las la-clipboard"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>130</h1>
-                        <span>Orders</span>
-                    </div>
-                    <div>
-                        <span class="las la-shopping-bag"></span>
-                    </div>
-                </div>
-
-                <div class="card-single">
-                    <div>
-                        <h1>$6k</h1>
-                        <span>Income</span>
-                    </div>
-                    <div>
-                        <span class="lab la-google-wallet"></span>
-                    </div>
-                </div>
-            </div>
-
             <div>
                 <div class="projects">
                     <div class="card">
                         <div class="card-header">
                             <h2>List foods</h2>
-                            <button>See all<span class="las la-arrow-right"></span></button>
+                            <a href="/Home/DetailFood">
+                                <span class="las la-arrow-right"></span>
+                                <span>See All</span>
+                            </a>
                         </div>
                         <div class="card-body">
                             <table width="100%">
@@ -176,6 +137,7 @@
                                                 <ul>
                                                     <a asp-action="Editloaimon" asp-route-id="@Model.listFood[i].Id">Edit</a> |
                                                     <a asp-action="DeleteLM" asp-route-id="@Model.listFood[i].Id">Delete</a> |
+                                                    
                                                 </ul>
                                             </td>
                                         </tr>

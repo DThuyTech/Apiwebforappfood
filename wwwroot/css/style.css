@@ -222,13 +222,14 @@ main{
     align-items: center;
     border-bottom: 1px solid #f0f0f0;
 }
-.card-header button{
-    background: var(--main-color);
+.card-header a{
+    background: #1c89ec;
     border-radius:10px;
     color:#fff;
     font-size: .8rem;
-    padding:.5rem 1rem; 
+    padding:.5rem 1.5rem; 
     border: 1px solid var(--main-color);
+    text-decoration: none;
 }
 table{
     border-collapse: collapse;
@@ -283,7 +284,7 @@ tr td:last-child{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5rem .7rem;
+    padding: .5rem 0.7rem;
 }
 
 .info{
@@ -441,3 +442,5 @@ tr td:last-child{
         grid-template-columns: 100%;
     }
 }
+
+

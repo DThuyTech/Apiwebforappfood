@@ -53,5 +53,18 @@ namespace apiforapp.Controllers
         {
             return View();
         }
+        async public Task<IActionResult> DetailFood()
+        {
+            HttpClient clientt = new HttpClient();
+            HttpResponseMessage response = await clientt.GetAsync("http://foodtureapi.somee.com/api/Food/GetFoodsToPage?page=1");
+            string content = await response.Content.ReadAsStringAsync();
+            List<Food> foods = System.Text.Json.JsonSerializer.Deserialize<List<Food>>(content);
+            FoodViewModel foodViewModel = new FoodViewModel(foods);
+            return View(foodViewModel);           
+        }
+        public IActionResult DETAIL()
+        {
+            return View();
+        }
     }
 }

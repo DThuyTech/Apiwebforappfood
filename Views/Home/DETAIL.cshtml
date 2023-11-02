@@ -1,0 +1,46 @@
+﻿@model apiforapp.ViewModels.FoodViewModel
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
+    <title> Admin Page</title>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel=" stylesheet" href="~/css/style.css" />
+</head>
+
+<body>
+    <div style="max-width: 350px; margin: 0 auto; padding:0 ">
+        <div class="wrapper">
+            
+            <div class="form-login">
+                <img class="detail-img" src="~/Content/images/preload1.jpg" />
+                <h2> Name Food </h2>
+                <form id="account" method="post">
+                    
+                    <div class="input-box"> 
+                        <p> ID </p>
+                        <p> Name </p>                       
+                        <p> Calories </p>
+                        <p> Cacbonhydrat </p>
+                        <p> Fat </p>
+                        <p> Protein </p>
+                        
+                    </div>
+                    <div class="input-box">
+                        <p>Instructions</p>
+                        <p>IngredientParts</p>                  
+                    </div>
+                    
+                    <div class="login-register">
+                        <a href="/Home/DetailFood">
+                            <span class="las la-arrow-left"></span>
+                            <span >Back to list</span>
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
